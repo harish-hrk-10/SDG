@@ -164,9 +164,13 @@ chatForm.addEventListener('submit', async (e) => {
         // Bot response
         addMessage(`Thank you. Your report has been analyzed and forwarded.`, 'bot', result);
 
+        // Determine API URL based on environment
+        const isLocalFile = window.location.protocol === 'file:';
+        const apiUrl = isLocalFile ? 'http://localhost:3000/api/send-email' : '/api/send-email';
+
         // Send email via backend
         try {
-            await fetch('/api/send-email', {
+            await fetch(apiUrl, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
