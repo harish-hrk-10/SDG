@@ -48,6 +48,11 @@ app.post('/api/send-email', async (req, res) => {
 });
 
 // Start the server
-app.listen(port, () => {
-    console.log(`Backend server running at http://localhost:${port}`);
-});
+if (require.main === module) {
+    app.listen(port, () => {
+        console.log(`Backend server running at http://localhost:${port}`);
+    });
+}
+
+// Export the app for Vercel
+module.exports = app;

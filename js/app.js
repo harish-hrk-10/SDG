@@ -166,7 +166,7 @@ chatForm.addEventListener('submit', async (e) => {
 
         // Send email via backend
         try {
-            await fetch('http://localhost:3000/api/send-email', {
+            await fetch('/api/send-email', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
